@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Customer Support RAG Chatbot
 
 ## Overview
@@ -82,3 +83,7 @@ This project uses two different models from the Google Generative AI family:
 - **Vector Databases**: Using ChromaDB to store and query vector embeddings.
 - **Web Development**: Building a functional frontend (HTML/CSS/JS) and backend (Flask) for a complete user experience.
 - **Dependency Management & Debugging**: Using `requirements.txt` and systematically debugging issues related to dependencies, API keys, and model compatibility.
+=======
+# AI-powered-customer-chatbot
+its a simple ai powered customer chatbot that uses python, python libraries, LLM, Gemini API, RAG and RENDER to deploy it. made by SOBHAN KUMAR SAHOO
+
