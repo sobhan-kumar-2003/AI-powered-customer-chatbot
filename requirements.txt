@@ -1,0 +1,10 @@
+flask
+google-generativeai
+langchain
+langchain-google-genai
+chromadb
+pypdf
+python-dotenv
+langchain-community
+cryptography
+gunicorn

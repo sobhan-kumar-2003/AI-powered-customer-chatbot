@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: customer-support-rag
+    env: python
+    plan: free
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn app:app"
+    envVars:
+      - key: GOOGLE_API_KEY
+        fromSecret: true
+      - key: PYTHON_VERSION
+        value: 3.11
+    disks:
+      - name: chromadb
+        mountPath: /data/db
+        sizeGB: 1
+  - type: job
+    name: ingest-data
+    env: python
+    plan: free
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python ingest.py"
+    envVars:
+      - key: GOOGLE_API_KEY
+        fromSecret: true
