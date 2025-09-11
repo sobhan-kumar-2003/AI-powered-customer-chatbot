@@ -4,17 +4,20 @@ services:
     env: python
     plan: free
     buildCommand: "pip install -r requirements.txt"
-    startCommand: "gunicorn app:app"
+    # Updated start command for Streamlit, binding to the port and address Render provides
+    startCommand: "streamlit run app.py --server.port $PORT --server.address 0.0.0.0"
     envVars:
       - key: GOOGLE_API_KEY
         fromSecret: true
       - key: PYTHON_VERSION
         value: 3.11
     disks:
-      - name: chromadb
-        mountPath: /data/db
+      # The disk now mounts to the directory our app uses
+      - name: chromadb-v2
+        mountPath: /app/db_v2 # Render typically puts the repo in /app
         sizeGB: 1
-  - type: job
+
+  - type: cron
     name: ingest-data
     env: python
     plan: free
@@ -23,3 +26,8 @@ services:
     envVars:
       - key: GOOGLE_API_KEY
         fromSecret: true
+    disks:
+      # The job also needs access to the same disk to write to it
+      - name: chromadb-v2
+        mountPath: /app/db_v2
+        sizeGB: 1

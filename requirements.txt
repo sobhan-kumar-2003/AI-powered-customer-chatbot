@@ -1,4 +1,4 @@
-flask
+streamlit
 google-generativeai
 langchain
 langchain-google-genai
@@ -7,4 +7,3 @@ pypdf
 python-dotenv
 langchain-community
 cryptography
-gunicorn
